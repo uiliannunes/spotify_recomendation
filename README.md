@@ -1,17 +1,14 @@
 # 🎧 Spotify Music Recommender System  
-*Um projeto completo usando Databricks, Spark, PCA, KMeans e API do Spotify*
+Pipeline Completo (ETL + Machine Learning + Visualizações Estilo Spotify)
 
-Este repositório contém dois notebooks que, juntos, formam um pipeline completo de recomendação musical usando dados do Spotify.  
-O projeto inclui:
+Este repositório apresenta um projeto completo envolvendo engenharia de dados, ciência de dados e machine learning, construído em Databricks + Apache Spark, com o objetivo de:
 
-- Extração de dados reais via **API do Spotify**  
-- Limpeza e padronização com **PySpark**  
-- Feature Engineering de áudio (energy, danceability, valence, etc.)  
-- Redução de dimensionalidade com **PCA**  
-- Clusterização com **KMeans**  
-- Visualizações avançadas usando **Plotly**  
-- Exibição de capas das músicas com visual estilo Spotify  
-- Sistema de recomendação baseado em vizinhança no espaço PCA  
+- Criar um ETL robusto para tratar uma base de músicas
+- Preparar dados para análise e modelagem
+- Implementar um sistema de recomendação musical
+- Reduzir dimensionalidade com PCA
+- Agrupar músicas com KMeans
+- Gerar visualizações profissionais, incluindo exibição de capas estilo Spotify
 
 ---
 
@@ -20,8 +17,8 @@ O projeto inclui:
 ```
 .
 ├── notebooks/
-│   ├── spotify_etl_artists_pipeline.ipynb
-│   ├── recomendador_spotify.ipynb
+│   ├── SPOTIFY_ETL.py
+│   ├── RECOMENDADOR_SPOTIFY.py
 │
 ├── images/
 └── README.md
@@ -29,54 +26,58 @@ O projeto inclui:
 
 ---
 
-## 🚀 Tecnologias Utilizadas
+## 🚀 Visão Geral do Projeto
 
-### Backend / Pipeline
-- Databricks  
-- Apache Spark  
-- PySpark  
-- Spotipy (API do Spotify)
+### 🧱 1. ETL — Engenharia de Dados com Spark
 
-### Machine Learning
-- PCA  
-- KMeans  
-- scikit-learn
+O notebook `SPOTIFY_ETL.py` realiza:
 
-### Visualizações
-- Plotly  
-- Matplotlib  
-- PIL (Pillow)
+- Ingestão da base de músicas
+- Padronização das colunas
+- Conversão segura de tipos usando try_cast
+- Feature Engineering das variáveis musicais
+- Salvamento otimizado em Parquet
+
+### 🔮 2. PCA + KMeans — Clusterização Musical
+
+O notebook `RECOMENDADOR_SPOTIFY.py` realiza:
+
+- Redução de dimensionalidade com PCA (2D/3D)
+- Agrupamento de músicas com KMeans
+- Análises temporais e exploração de variáveis
+- Scatter interativo Plotly
+- Similaridade no espaço PCA
+
+### 🎵 3. Sistema de Recomendação
+
+- Identifica cluster da música selecionada
+- Filtra músicas do mesmo cluster
+- Calcula distância euclidiana no espaço PCA
+- Ordena pelas mais semelhantes
+- Retorna Top-N recomendações
 
 ---
 
-## 🎵 O que o Projeto Faz?
+## 🖼 4. Visualizações Estilo Spotify
 
-### ✔️ ETL de dados do Spotify
-- Pipeline Spark
-- Conversão de tipos
-- Salvamento em Parquet
+O projeto inclui:
 
-### ✔️ Feature Engineering
-- Tratamento de colunas
-- Conversões com try_cast
-- Padronização de dados musicais
+- Grid de capas com cantos arredondados
+- Layout escuro tipo Spotify (#121212)
+- Visualização interativa com Plotly
+- Gráficos temporais e analíticos
+- PCA com hover mostrando artista/música
 
-### ✔️ Clusterização
-- Agrupamento de músicas com KMeans
+---
 
-### ✔️ Redução com PCA
-- Projeção 2D/3D  
-- Visualização interativa
+## 🛠 Tecnologias Utilizadas
 
-### ✔️ Recomendador
-- Similaridade no espaço PCA  
-- Filtro por cluster  
-- Ranking por proximidade
-
-### ✔️ Grid de capas estilo Spotify
-- Cantos arredondados  
-- Fundos escuros  
-- Visual premium  
+- Databricks  
+- Apache Spark (PySpark)  
+- PCA, KMeans (Scikit-Learn)  
+- Plotly, Matplotlib  
+- Pillow (PIL)  
+- Spotipy (opcional)
 
 ---
 
@@ -88,16 +89,17 @@ cd spotify-recommender
 pip install -r requirements.txt
 ```
 
-Abra os notebooks em Databricks, Jupyter ou VSCode.
+Execute os notebooks em Databricks, Colab, VSCode ou Jupyter.
 
 ---
 
-## 🔑 Configuração da API do Spotify
+## 🔑 API do Spotify (Opcional)
 
-Crie chaves em:  
-👉 https://developer.spotify.com/dashboard
+Crie chaves em:
 
-Configure:
+https://developer.spotify.com/dashboard
+
+Configuração:
 
 ```python
 client_id = "SEU_CLIENT_ID"
@@ -109,17 +111,18 @@ redirect_uri = "http://localhost:8888/callback"
 
 ## 🧠 Resultados
 
-- Sistema recomendador funcional  
-- Clusters coerentes  
+- Recomendações musicais precisas  
+- Clusters bem definidos  
 - PCA interativo  
 - Visual profissional de capas  
+- Pipeline ETL preparado para produção  
 
 ---
 
 ## 📬 Contato
 
 - LinkedIn: https://linkedin.com/in/uiliannunes  
-- GitHub: https://github.com/uiliannunes  
+- GitHub: https://github.com/uiliannunes
 
 ---
 
